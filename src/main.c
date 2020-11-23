@@ -2,8 +2,6 @@
 #include "raylib.h"
 
 #include "Menu/Menu.h"
-#include "BouncingBallClick/BouncingBallClick.h"
-#include "PoppingSquareClick/PoppingSquareClick.h"
 
 int main(void)
 {
