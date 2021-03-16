@@ -2,12 +2,12 @@
 #include "raylib.h"
 
 #include "Menu/Menu.h"
+#include "projconstants.h"
 
 int main(void)
 {
     // Initialization
     //---------------------------------------------------------
-
     const int screenWidth = 1920;
     const int screenHeight = 1080;
 
@@ -16,26 +16,24 @@ int main(void)
 
     SetTargetFPS(144);
 
-    int nextScene = 0;  // -1 means exit
+    int nextScene = 0;
 
     int (* scenes[1])() = {Menu_Scene};
     int (* scene)() = scenes[nextScene];
 
 
-    // Scene Switching Loop
+    // Scene Loop
     //---------------------------------------------------------
-
-    while (nextScene != -1)  // Continue to switch scenes until scene exit (-1) returned
-    {
-        nextScene = (* scene)();  // Scene function returns next scene
+    while(1) {
+        nextScene = ((int(*)())scene)();  // Scene function returns next scene
+        if (nextScene == SCENE_EXIT)
+            break;
         scene = scenes[nextScene];
     }
 
 
     // Exit
     //---------------------------------------------------------
-
     CloseWindow();  // Close window and OpenGL context
-
     return 0;
 }

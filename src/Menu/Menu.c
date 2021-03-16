@@ -1,5 +1,6 @@
 #include "raylib.h"
 
+#include "../projconstants.h"
 #include "Menu.h"
 
 
@@ -7,16 +8,13 @@ int Menu_Scene()
 {
     // NOTE: Initialise scene here
     
-    while (1) {
+    while (!WindowShouldClose()) {
         // NOTE: Update scene here
 
         BeginDrawing();
             ClearBackground(RAYWHITE);
             // NOTE: Render menu here
         EndDrawing();
-
-        if (WindowShouldClose()) {
-            return -1;  // Return exit code
-        }
     }
+    return SCENE_EXIT;  // Return exit code
 }
